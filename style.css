@@ -1,0 +1,117 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: black;
+}
+.conteiner{
+    display: block;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+}
+.sun{
+position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40vh;
+    height: 40vh;
+    border-radius: 50%;
+    background: url('./Solar.jpg') repeat-x;
+    background-size: auto 100%;
+    filter: blur(0.8px);
+    animation-name: scale, shadowSun, sun;
+    animation-duration: 6s, 6s, 280s;
+    animation-iteration-count: infinite, infinite, infinite;
+    animation-timing-function: linear, linear, linear;
+    z-index: -20;
+}
+@keyframes shadowSun {
+    0% {  box-shadow: 0 0 112px  rgba(245, 245, 150, 0.9); filter: blur(0.8px); }
+    50% {  box-shadow: 0 0 148px rgb(255, 255, 0, 0.6); filter: blur(1.6px); }
+    100% {  box-shadow: 0 0 112px rgba(245, 245, 150, 0.9); filter: blur(0.8px);}
+}
+@keyframes sun {
+    0% {  background-position: -1280px 0; }
+    50% {  background-position: 0 0; }
+    100% { background-position: 1000px 0;}
+}
+.earth{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 15vh;
+    width: 15vh;
+    border-radius: 50%;
+    z-index: -10;
+    animation: orbitaEarth 36s linear infinite;
+}
+@keyframes orbitaEarth {
+    0% { scale: 1.4;  }
+    24% { z-index: -10;  }
+    25% { left: 10%; top: 65%; scale: 0.8; z-index: -21;}
+    50% { scale: 0.1; }
+    74% { z-index: -21;  }
+    75% { top: 35%; left: calc(90% - 7.5vh); scale: 0.8; z-index: -10; }
+    100% { scale: 1.4;  }
+}
+.earth::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 70%;
+    width: 70%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 80%, 
+                                 #81e8f6, #76deef 10%,
+                                 #055194 66%, #062745 100%);
+    box-shadow: 0 0 1em #76deef;
+    z-index: -9;
+}
+.earth::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 70%;
+    width: 70%;
+    border-radius: 50%;
+    background-size: auto 100%;
+    background: url('http://hop.ie/balls/images/world-map-one-color.png') repeat-x;
+    background-size: auto 100%;
+    z-index: -8;
+    animation: mapEarth 3s infinite linear;
+}
+@keyframes mapEarth {
+    0% { background-position: -849px 0; }
+    0% { background-position: 0 0; }
+    100% { background-position: -829px 0; } 
+}
+.moon{
+        position: absolute;
+        top: 50%;  left: 50%;
+        transform: translate(-50%, -50%);
+        height: 1vh;
+        width: 1vh;
+        border-radius: 50%;
+        background-color: black;
+        box-shadow: 0 0 3px white;
+        z-index: -8;
+        animation: orbitaMoon 9s ease infinite;
+    }
+    @keyframes orbitaMoon {
+    0% { scale: 0.4;  z-index: -11}
+    24% { z-index: -11;  }
+    25% { left: calc(100% - 0.5vh); top: 55%; z-index: -7;}
+    50% { scale: 2; }
+    74% { z-index: -7; }
+    75% { top: 45%; left: 0.5vh;  z-index: -11;}
+    100% { scale: 0.4; z-index: -11}
+}
